@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.ordroid.hxy.myuidemo.adapter.DividerItemDecoration;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +31,9 @@ public class RecyclerViewActivity extends Activity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter=new RecyclerAdapter();
         mRecyclerView.setAdapter(mAdapter);
+
+        //add itemdecoration
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
 
     }
 
