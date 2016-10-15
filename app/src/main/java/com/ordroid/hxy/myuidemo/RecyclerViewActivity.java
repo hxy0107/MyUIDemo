@@ -2,13 +2,17 @@ package com.ordroid.hxy.myuidemo;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.ordroid.hxy.myuidemo.adapter.DividerGridItemDecoration;
 import com.ordroid.hxy.myuidemo.adapter.DividerItemDecoration;
 
 import java.util.ArrayList;
@@ -28,13 +32,14 @@ public class RecyclerViewActivity extends Activity {
         setContentView(R.layout.activity_recyclerview);
         initData();
         mRecyclerView=(RecyclerView)findViewById(R.id.id_recyclerview);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager( 4,StaggeredGridLayoutManager.VERTICAL));
         mAdapter=new RecyclerAdapter();
         mRecyclerView.setAdapter(mAdapter);
 
         //add itemdecoration
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
+        mRecyclerView.addItemDecoration(new DividerGridItemDecoration(this));
 
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
     protected void initData(){
@@ -43,6 +48,12 @@ public class RecyclerViewActivity extends Activity {
         for(int i='A';i<'Z';i++){
             mDates.add(""+(char)i);
         }
+        for(int i='A';i<'Z';i++){
+            mDates.add(""+(char)i);
+        }        for(int i='A';i<'Z';i++){
+            mDates.add(""+(char)i);
+        }
+
     }
 
 
